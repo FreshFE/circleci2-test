@@ -3,8 +3,13 @@ jobs:
    build:
      docker:
        - image: circleci/node:carbon
-     working_directory: ~/circleci2-test
+     branches:
+       only:
+         - /v[0-9]+(\.[0-9]+)*/
      steps:
        - checkout
        - run: yarn install
-       - run: echo "hello world"
+       - deploy:
+          command:
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            npm publish
