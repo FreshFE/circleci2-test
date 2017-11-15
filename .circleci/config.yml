@@ -11,3 +11,9 @@ jobs:
         - image: circleci/node:carbon
       steps:
         - checkout
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
