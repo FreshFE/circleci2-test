@@ -3,6 +3,8 @@ jobs:
    build:
      docker:
        - image: circleci/node:carbon
+     working_directory: ~/circleci2-test
      steps:
        - checkout
+       - run: yarn install
        - run: echo "hello world"
